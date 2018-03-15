@@ -2,7 +2,7 @@
 
 `Creates a bouncing loader animation.`
 
-Tạo hiệu ứng nảy khi tải trang.
+Tạo một hiệu ứng đang tải.
 #### HTML
 
 ```html
@@ -113,9 +113,10 @@ Ghi chú: `1rem` tương đương `16px`.
 * https://caniuse.com/#feat=css-animation
 
 <!-- tags: animation -->
+
 ### Đặt lại Box-sizing
 
-Đặt lại `Độ rộng` và `chiều cao` của box-model sao cho không bị ảnh hưởng bởi `padding` và `borders`.
+Đặt lại box-model để mà `width` và `height` không bị ảnh hưởng bởi `border` hoặc `padding` của nó.
 
 #### CSS
 
@@ -151,7 +152,7 @@ html {
 
 #### Giải thích
 
-1. `box-sizing: border-box` làm cho việc bổ sung `padding` hoặc `border`s không bị ảnh hưởng bởi `chiều cao` hay `độ rộng` phần tử.
+1. `box-sizing: border-box` làm cho việc thêm `padding` hoặc `border` không ảnh hưởng đến `width` hoặc `height` của phần tử
 2. `box-sizing: inherit` làm cho một phần tử tuân theo quy tắc `box-sizing` của phần tử cha.
 
 #### Hỗ trợ trình duyệt
@@ -215,19 +216,19 @@ html {
 
 #### Giải thích
 
-1. `.clearfix::after` định danh một phần tử giả lập.
-2. `content: ''` cho phép phần tử giả lập đó ảnh hưởng đến bố cục.
-3. `clear: both` xác định rằng bên trái, bên phải hoặc cả hai bên của phần tử không thể được kề bên với các phần tử đã lưu trước đó trong cùng một ngữ cảnh định dạng khối.
+1. `.clearfix::after` định nghĩa 1 phần tử giả(pseudo-element).
+2. `content: ''` cho phép các phần tử giả tác động đến layout.
+3. `clear: both` chỉ ra rằng bên trái, phải hoặc cả 2 bên của phần tử không thể liền kệ với các phần tử float trước đó trong cùng 1 khối định dạng.
 
 #### Trình duyệt hỗ trợ
 
-<span class="snippet__support-note">⚠️ Để đoạn mã này hoạt động đúng, bạn cần phải đảm bảo rằng không có phần tử con non-floating trong vùng chứa và không có các tall floats trước vùng chứa rõ ràng nhưng trong cùng một ngữ cảnh định dạng (ví dụ: các cột được thả nổi). (e.g. floated columns).</span>
+<span class="snippet__support-note">⚠️ Để phần này thực hiện đúng bạn cần đảm bảo rằng không có phần tử con không float nào trong container và không có phần float nào trước clearfixed container trong cùng định dạng (ví dụ như các cột đã float).</span>
 
 <!-- tags: layout -->
-### Tỉ lệ giữa chiều rộng và cao không thay đổi
 
-Với một phần tử có chiều rộng biến đổi, nó sẽ đảm bảo chiều cao của nó vẫn tương xứng theo kiểu đáp ứng
-(i.e., chiều rộng đến chiều cao của nó không thay đổi).
+### Cố định tỉ lệ chiều rộng với chiều cao
+
+Với mỗi biến chiều rộng của một phần từ, hãy đảm bảo rằng chiều cao của nó vẫn tương xứng theo cách thức responsive (tỉ lệ chiều rộng với chiều cao không đổi)
 
 #### HTML
 
@@ -283,7 +284,9 @@ Thay đổi kích thước cửa sổ trình duyệt của bạn để xem tỷ 
 
 #### Giải thích
 
-`padding-top` trên phần tử giả lập `::before` gây ra chiều cao của phần tử bằng một phần trăm chiều rộng của nó. `100%` do đó chiều cao của phần tử sẽ luôn luôn là `100%`,tạo ra một hình vuông đáp ứng.
+`padding-top` đặt ở `::before` phần tử mẫu khiến chiếu cao của phần tử luôn bằng một tỉ lệ với chiều rộng của nó.
+ `100%` do đó chiều cao của phần từ luôn luôn cùng với `100%` chiều rộng, tạo 1 khung responsive
+square.
 
 Phương pháp này cũng cho phép nội dung được đặt bên trong phần tử bình thường.
 
@@ -336,7 +339,7 @@ Phân phối đều các phần tử con trong phần tử cha
 #### Giải thích
 
 1. `display: flex` kích hoạt flexbox.
-2. `justify-content: space-between` phân bố đều các phần tử con theo chiều ngang. Mục đầu tiên được đặt ở cạnh trái, trong khi mục cuối cùng được đặt ở cạnh bên phải.
+2. `justify-content: space-between` phân bố đều các phần tử con theo chiều ngang. Phần tử đầu tiền được đặt ở cạnh trái, trong khi mục cuối cùng được đặt ở cạnh bên phải.
 
 Cách khác, sử dụng `justify-content: space-around` để phân phối phần tử con với không gian xung quoanh chung chứ không phải giữa chúng.
 
@@ -387,9 +390,9 @@ Theo chiều dọc và chiều dọc, phần tử con nằm trong phần tử g�
 
 #### Giải thích
 
-1. `display: flex` kích hoạt flexbox.
-2. `justify-content: center` căn giữa theo chiều ngang.
-3. `align-items: center` căn phần tử con giữa theo chiều dọc.
+1. `display: flex` bật flexbox.
+2. `justify-content: center` đặt trung tâm phần tử con theo chiều ngang.
+3. `align-items: center` đặt trung tâm phần tử con theo chiều .
 
 #### Hỗ trợ trình duyệt
 
@@ -546,11 +549,11 @@ Giao diện website cơ bản sử dụng `grid`.
 
 #### Giải thích
 
-1. `display: grid` kích hoạt grid.
-2. `grid-gap: 10px` định nghĩa khoảng trắng giữa các phần tử.
-3. `grid-template-columns: repeat(3, 1fr)` định nghĩa 3 cột cùng kích cỡ.
-4. `grid-template-areas` định nghĩa tên của các khu vực grid.
-5. `grid-area: sidebar` làm cho các phần tử sử dụng khu vực với tên là `sidebar`.
+1. `display: grid` bật grid.
+2. `grid-gap: 10px` định nghĩa khoảng trống giữa các phần tử.
+3. `grid-template-columns: repeat(3, 1fr)` định nghĩa 3 cột cùng 1 kích thước.
+4. `grid-template-areas` định nghĩa tên của các vùng grid 
+5. `grid-area: sidebar` tạo ra phần tử sử dụng vùng với tên `sidebar`.
 
 #### Trình duyệt hỗ trợ
 
@@ -600,11 +603,10 @@ Nếu đoạn text dài hơn 1 dòng nó sẽ được lược bỏ bằng dấu
 
 #### Giải thích
 
-1. `overflow: hidden` ngăn cho đoạn văn bản không bị tràn lên kích cỡ của nó
-   (đối với 1 khối, 100% chiều rông và chiều cao tự động).
-2. `white-space: nowrap` ngăn cho text vượt quá 1 hàng trong chiều cao.
-3. `text-overflow: ellipsis` thay bằng dấu chấm lửng nếu đoạn text tràn ra ngoài kích cỡ.
-4. `width: 200px;` đảm bảo rằng phần tử có một chiều, để biết khi nào có dấu chấm lửng
+1. `overflow: hidden` ngăn đoạn văn bản tràn ra ngoài kích thước của nó. (với block thì 100% chiều rộng và auto chiều cao) 
+2. `white-space: nowrap` ngăn văn bản không vượt quá 1 dòng chiều cao.
+3. `text-overflow: ellipsis` làm nó kết thức bởi dấu chấm lửng nếu văn bản vượt quá kích thước của nó
+4. `width: 200px;` đảm bảo phần từ có kích thước, để biết khi nào cần có dấu chấm lửng
 
 #### Hỗ trợ trình duyệt
 
@@ -651,9 +653,9 @@ Tạo hình tròn với css thuần.
 
 #### Giải thích
 
-`border-radius: 50%` đường cong của một phần tử để tạo ra một vòng tròn.
-                     
-Vì một vòng tròn có cùng bán kính tại bất kỳ điểm nhất định, chiều rộng và chiều cao phải giống nhau. Các giá trị khác nhau sẽ tạo ra một hình elip.
+`border-radius: 50%` làm cong viền của phần tử để tạo vòng tròn
+
+Bời vì vòng tròn có góc bằng nhau tại bất kỳ điểm nào, nên `chiều rộng` và `chiều cao` phải giống nhau. Nếu khác nhau sẽ tạo hình eclipse.
 
 #### Hỗ trợ trình duyệt
 
@@ -788,7 +790,7 @@ Thay đổi phong cách của văn bản tùy chọn
 
 #### Explanation
 
-`::selection` định nghĩa một bộ chọn giả trên một phần tử để định kiểu văn bản bên trong nó khi được chọn. Lưu ý rằng nếu bạn không kết hợp bất kỳ bộ chọn khác, phong cách của bạn sẽ được áp dụng ở cấp gốc tài liệu, cho bất kỳ phần tử có thể lựa chọn nào.
+`::selection` định nghĩa bộ chọn mẫu trên 1 phần tử để tạo mẫu văn bản bên trong nó khi được chọn. Lưu ý rằng nếu bạn không kết hợp các bộ chọn khác, mẫu của bạn sẽ được áp dụng tại mức tài liệu gốc, với bất cứ phần tử được chọn nào 
 
 #### Browser support
 
@@ -869,20 +871,19 @@ Tạo một cái bóng giống như `box-shadow` nhưng dựa trên màu sắc t
 
 #### Explanation
 
-The snippet requires a somewhat complex case of stacking contexts to get right, such that the pseudo-element
-will be positioned underneath the element itself while still being visible.
+Phần này yêu cầu 1 tập định nghĩa phức tạp để thực hiện đúng, như là phần tử mẫu sẽ được đặt ngay dưới chính nó trong khi vẫn hiện.
 
-1. `position: relative` về cha mẹ thiết lập một ngữ cảnh định vị Cartesian cho các phần tử con.
-2. `z-index: 1` Thiết lập một ngữ cảnh xếp chồng khác.
-3. `position: relative` Trên phần tử con thiết lập một ngữ cảnh cho các phần tử giả lập.
-4. `::after` định nghĩa 1 phần tử gỉa lập.
-5. `position: absolute` lấy phần tử giả ra khỏi dòng chảy của tài liệu và định vị nó trong quan hệ với cha mẹ.
-6. `width: 100%` và `height: 100%` kích cỡ các yếu tố giả để điền vào kích thước của cha mẹ, làm cho nó có kích thước bằng nhau.
-7. `background: inherit` Làm cho các phần tử giả kế thừa các linear gradient được chỉ định trên các phần tử.
-8. `top: 0.5rem` bù đắp phần tử giả giảm nhẹ từ cha mẹ của nó.
-9. `filter: blur(0.4rem)` sẽ làm mờ phần tử giả tạo ra sự xuất hiện của một cái bóng bên dưới.
-10. `opacity: 0.7` làm cho các phần tử giả mờ đi 1 phần.
-11. `z-index: -1` đưa vị trí phần tử giả ra sau phần tử cha.
+1. `position: relative` ở phần tử cha thiết lập định nghĩa vị trí Cartesian cho các phần tử con.
+2. `z-index: 1` thiếp lập 1 lớp định nghĩa mới
+3. `position: relative` ở phần tử con thiết lập dịnh nghĩa vị trí cho phần tử mẫu
+4. `::after` định nghĩa 1 phần tử mẫu
+5. `position: absolute` tách phần tử mẫu ra khỏi luồng tài liệu và đặt nó ở vị trí relation với cha nó.
+6. `width: 100%` and `height: 100%` làm kích thước phần tử mẫu lấp đầy kích thước cha nó, làm nó cần bằng về kích thước.
+7. `background: inherit` khiến phần tử mẫu thừa kế quy định về góc tuyến tính trên phần tử.
+8. `top: 0.5rem` làm nhô phần tử mẫu xuống dưới cha nó.
+9. `filter: blur(0.4rem)` sẽ làm mờ phần từ mẫu để tạo bóng phía dưới.
+10. `opacity: 0.7` khiến phần tử mẫu trong suốt 1 phần
+11. `z-index: -1` đặt phần tử mẫu sau cha của nó
 
 #### Browser support
 
@@ -929,8 +930,7 @@ Tạo ra một hiệu ứng mà văn bản xuất hiện để được "khắc"
 
 #### Explanation
 
-`text-shadow: 0 2px white` tạo ra shadow màu trắng nhô ra `0px` theo chiều ngang và `2px` theo chiều dọc
-từ vị trí nguồn.
+`text-shadow: 0 2px white`  tạo một bóng trắng nhô `0px` theo chiều ngang và `2px` theo chiều đọc từ vị trí gốc
 
 Màu nền phải tối hơn màu bóng để có thể hoạt động.
 
@@ -984,13 +984,13 @@ cho văn bản một màu gradient
 
 #### Explanation
 
-1. `background: -webkit-linear-gradient(...)` cho phần tử text màu gradient.
-2. `webkit-text-fill-color: transparent` đổ vào đoạn text màu gradient.
-3. `webkit-background-clip: text` clip nền với văn bản, điền vào các văn bản với nền gradient như màu sắc.
+1. `background: -webkit-linear-gradient(...)` cho phần tử chữ có nền màu ch
+2. `webkit-text-fill-color: transparent` tô chữ với 1 màu mờ
+3. `webkit-background-clip: text` ghim nền với chữ, tô chữ với màu nền chuyển.
 
 #### Browser support
 
-<span class="snippet__support-note">⚠️ Uses non-standard properties.</span>
+<span class="snippet__support-note">⚠️ Sử dụng thuộc tính không chuẩn.</span>
 
 * https://caniuse.com/#feat=text-stroke
 
@@ -1063,11 +1063,11 @@ Cung cấp cho một phần tử một đường viền bằng 1 pixel của thi
 
 #### Explanation
 
-1. `box-shadow`, Khi sử dụng để lan rộng, sử dụng một border giả có thẻ  sử dụng subpixels\*.
-2. sử dụng `@media (min-resolution: ...)` để check tỉ lệ pixel của thiết bị (`1dppx` equals 96 DPI),
-  cài đặt độ lan rộng của `box-shadow` bằng `1 / dppx`.
+1. `box-shadow`, chỉ khi sử dụng rộng rãi, thêm các viền mẫu có thể sử dụng subpixels\*
+2. Sử dụng `@media (min-resolution: ...)` để kiểm tra tỉ lệ pixel của thiết bị (`1dppx` tương đương 96 DPI),
+  cài đặt rộng rãi `box-shadow` tương đương `1 / dppx`.
 
-#### Browser Support
+#### Trình duyệt hỗ trợ
 
 <span class="snippet__support-note">⚠️ Cần cú pháp thay thế và kiểm tra các tác nhân người dùng JavaScript để được hỗ trợ đầy đủ..</span>
 
@@ -1160,16 +1160,16 @@ Thêm gradient fading cho một phần tử tràn để biểu thị tốt hơn 
 document.querySelector('.snippet-demo__overflow-scroll-gradient__scroller').innerHTML = 'content '.repeat(100)
 </script>
 
-#### Explanation
+#### Giải thích
 
-1. `position: relative` trên phần tử cha thiết lập một ngữ cảnh định vị Cartesian cho nội dung của phần tử giả.
-2. `::after` định nghĩa một phần tử giả.
-3. `background-image: linear-gradient(...)` thêm một gradient tuyến tính mà fades từ minh bạch để trắng (từ trên xuống dưới).
-4. `position: absolute` lấy phần tử giả ra khỏi dòng chảy của tài liệu và định vị nó trong quan hệ với cha mẹ.
-5. `width: 240px` khớp với kích thước của phần tử cuộn (đó là một đứa trẻ của cha mẹ có yếu tố giả).
-6. `height: 25px` là chiều cao cua phần tử giả fading , nên được giữ ở mức tương đối thấp.
-7. `bottom: 0` vị trí của phần tử giả ở dưới phần tử cha.
-8. `pointer-events: none` xác định rằng phần tử giả không thể là một mục tiêu của sự kiện chuột, cho phép văn bản đằng sau nó vẫn có thể được lựa chọn / tương tác.
+1. `position: relative` trên phần tử cha thiết lập 1 định nghĩa vị trí Cartesian cho phần tử mẫu. 
+2. `::after` định nghĩa 1 phần tử mẫu
+3. `background-image: linear-gradient(...)` thêm 1 dốc tuyến tính mờ dần từ trong suốt trên trắng (trên xuống dưới)
+4. `position: absolute` đấy phần tử mẫu ra khỏi luồng tài liệu và đặt vị trí nó relation với cha nó.
+5. `width: 240px` gán kích thước của phần tử cuộn ( con của cha có phần tử mẫu)
+6. `height: 25px` là chiều cao của phần tử mẫu mờ dốc, nên giữ nhỏ tương đối
+7. `bottom: 0` đặt vị trí phần tử mẫu dưới cùng của ch
+8. `pointer-events: none` quy định phần tử mẫu không thể bị chọn với sự kiện chuột, cho phép chữ đắng sau vẫn có thể được chọn/ tương tác
 
 #### Browser support
 
@@ -1357,13 +1357,14 @@ Sử dụng một hình dạng SVG để tách hai khối khác nhau để tạo
 
 #### Explanation
 
-1. `position: relative` trên phần tử cha thiết lập một ngữ cảnh định vị Cartesian cho nội dung của phần tử giả.
-2. `::after` định nghĩa một phần tử giả.
-3. `background-image: url(...)` thêm hình SVG (hình tam giác 24x24 ở định dạng cơ sở64) làm hình nền của phần tử giả, lặp lại theo mặc định. Nó phải có màu sắc tương tự như khối đang được tách ra.
-4. `position: absolute` takes the pseudo element out of the flow of the document and positions it in relation to the parent.
-5. `width: 100%` đảm bảo phần tử trải dài toàn bộ chiều rộng của cha mẹ.
-6. `height: 24px` giống chiều cao của shape.
-7. `bottom: 0` vị trí dưới cùng của phần tử cha.
+1. `position: relative`trên phần tử thiết lập 1 định  nghĩa vị trí Cartesian cho phần tử mẫu
+2. `::after` định nghĩa 1 phàn tử mẫu
+3. `background-image: url(...)` thêm 1 khối SVG (1 tam giác 24x24 trên định dạng base64) như là ảnh nền của phần tử mẫu, mặc định tự lặp
+Nó phải cùng màu với khối được chia
+4. `position: absolute` mang phần tử mẫu ra khỏi tài liệu và đặt nó ở vị trí relation với cha nó
+5. `width: 100%` đảm bảo phần tử trải dài chiều rộng cha nó
+6. `height: 24px` là chiều cao tương tự như khối.
+7. `bottom: 0` đặt phần tử mẫu ở cuối cha nó
 
 #### Browser support
 
@@ -1403,21 +1404,21 @@ Sử dụng phông chữ bản địa của hệ điều hành để có đượ
 }
 </style>
 
-#### Explanation
+#### Giải thích
 
-The browser looks for each successive font, preferring the first one if possible, and
-falls back to the next if it cannot find the font (on the system or defined in CSS).
+Trình duyệt tìm kiếm mỗi font kế tiếp, ưu tiên cái đầu tiên có thể, và đến tiếp cái tiếp theo nếu không thể tìm thấy font(trên hệ thống hoặc định nghĩa trong css)
 
-1. `-apple-system` ở San Francisco, được sử dụng trên iOS và macOS (tuy nhiên không có Chrome)
-2. `BlinkMacSystemFont` ở San Francisco sử dụng trên macOS Chrome
+1. `-apple-system` là San Francisco, sử dụng trên iOs và macOs(tuy nhiên không phải Chrome)
+2. `BlinkMacSystemFont` là San francisco, sử dụng trên macOs chrome
 3. `Segoe UI` sử dụng trên Windows 10
 4. `Roboto` sử dụng trên Android
-5. `Oxygen-Sans` được sử dụng trên GNU+Linux
-6. `Ubuntu` được sử dụng trên Linux
-7. `"Helvetica Neue"` và `Helvetica` được sử dụng trên macOS 10.10 và bên dưới (được bao bọc bởi dấu ngoặc kép bởi vì nó có một không gian)
-9. `sans-serif` là phông chữ sans-serif dự phòng nếu không có phông chữ nào được hỗ trợ
+5. `Oxygen-Sans` sử dụng trên GNU+Linux
+6. `Ubuntu` sử dụng trên Linux
+7. `"Helvetica Neue"` vaf `Helvetica` sử dụng trên macOS 10.10 và thấp hơn (gói trong trích dẫn vì nó có khoảng trống)
+8. `Arial` là font được sử dụng rỗng rãi bởi tất cả hệ điều hành
+9. `sans-serif` là font sans-serif  dự phòng khi không cái nào khác hộ tr
 
-#### Browser support
+#### Trình duyệt hỗ trợ
 
 <span class="snippet__support-note">✅ No caveats.</span>
 
